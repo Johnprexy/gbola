@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+@import "tailwindcss";
 
 :root {
   --navy: #0a1628;
@@ -12,7 +11,7 @@
   --offwhite: #f8f6f0;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
 
@@ -23,9 +22,8 @@ body {
   overflow-x: hidden;
 }
 
-.font-serif {
-  font-family: 'Cormorant Garamond', serif;
-}
+/* Ensure pages with light backgrounds don't inherit dark body */
+#root { min-height: 100vh; }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
@@ -59,3 +57,9 @@ body {
   50% { transform: translateY(-10px); }
 }
 .float-anim { animation: float 4s ease-in-out infinite; }
+
+/* Fix: Tailwind v4 doesn't include border-opacity utilities by default */
+.border-white\/08 { border-color: rgba(255, 255, 255, 0.08); }
+.border-white\/10 { border-color: rgba(255, 255, 255, 0.10); }
+.border-white\/12 { border-color: rgba(255, 255, 255, 0.12); }
+.border-white\/15 { border-color: rgba(255, 255, 255, 0.15); }

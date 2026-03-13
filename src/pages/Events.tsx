@@ -33,7 +33,7 @@ export default function Events() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-white/52 text-base max-w-xl leading-[1.75]"
+            className="text-white/50 text-base max-w-xl leading-[1.75]"
           >
             Upcoming conferences, prayer summits, training days, and special meetings where Rev.
             Gbola will be ministering.

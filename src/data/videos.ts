@@ -6,35 +6,35 @@ export interface YoutubeVideo {
 }
 
 // Real videos from https://www.youtube.com/@gbola_oladosu
-// Titles auto-load from YouTube via iframe — titles below are display fallbacks
+// Update titles below once you confirm them from your YouTube channel
 export const youtubeVideos: YoutubeVideo[] = [
   {
     id: 'HSY6mnleBSk',
-    title: 'Teaching 1',
+    title: 'Watch on YouTube',
     category: 'Teaching',
     description: 'A powerful message from Rev. Adegbola Oladosu.',
   },
   {
     id: 'dpLajwi2nMs',
-    title: 'Teaching 2',
+    title: 'Watch on YouTube',
     category: 'Teaching',
     description: 'A powerful message from Rev. Adegbola Oladosu.',
   },
   {
     id: 'cAlknNe1oiM',
-    title: 'Teaching 3',
+    title: 'Watch on YouTube',
     category: 'Teaching',
     description: 'A powerful message from Rev. Adegbola Oladosu.',
   },
   {
     id: '6t7YH4TnHIc',
-    title: 'Teaching 4',
+    title: 'Watch on YouTube',
     category: 'Teaching',
     description: 'A powerful message from Rev. Adegbola Oladosu.',
   },
   {
     id: 'i7sSAp1R9mE',
-    title: 'Teaching 5',
+    title: 'Watch on YouTube',
     category: 'Teaching',
     description: 'A powerful message from Rev. Adegbola Oladosu.',
   },

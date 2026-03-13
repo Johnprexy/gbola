@@ -108,7 +108,7 @@ export default function Invite() {
                     Invitation Request Form
                   </h3>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] tracking-[0.18em] uppercase text-gray-400 mb-2">Your Name *</label>
                       <input name="name" value={form.name} onChange={handleChange} required placeholder="Pastor John Doe"
@@ -121,7 +121,7 @@ export default function Invite() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] tracking-[0.18em] uppercase text-gray-400 mb-2">Email *</label>
                       <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="pastor@church.org"
@@ -134,7 +134,7 @@ export default function Invite() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] tracking-[0.18em] uppercase text-gray-400 mb-2">Event Date *</label>
                       <input name="date" type="date" value={form.date} onChange={handleChange} required

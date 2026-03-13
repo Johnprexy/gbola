@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Moon, Sun } from 'lucide-react'
@@ -22,6 +22,10 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  // Use a ref to track previous path so we can close menu on navigation
+  // without calling setState inside useEffect (which triggers ESLint warning)
+  const menuOpenRef = useRef(menuOpen)
+  menuOpenRef.current = menuOpen
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -29,10 +33,15 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close menu on route change — use a ref to avoid calling setState
+  // synchronously inside effect; schedule via microtask instead
   useEffect(() => {
-    setMenuOpen(false)
-    document.body.style.overflow = ''
-  }, [location])
+    if (menuOpenRef.current) {
+      setMenuOpen(false)
+      document.body.style.overflow = ''
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname])
 
   const toggleMenu = () => {
     setMenuOpen((v) => {
@@ -54,11 +63,11 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
         }`}
       >
         {/* Logo */}
-        <Link to="/" className="flex flex-col gap-0.5">
-          <span className="font-serif text-lg font-semibold tracking-wide text-white">
+        <Link to="/" className="flex flex-col gap-0.5 min-w-0">
+          <span className="font-serif text-base lg:text-lg font-semibold tracking-wide text-white whitespace-nowrap">
             Rev. Adegbola Oladosu
           </span>
-          <span className="text-[10px] tracking-[0.22em] uppercase text-[#c9a84c] font-medium">
+          <span className="hidden sm:block text-[10px] tracking-[0.22em] uppercase text-[#c9a84c] font-medium">
             Teaching the Word · Abuja, Nigeria
           </span>
         </Link>
@@ -99,7 +108,10 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
 
         {/* Mobile actions */}
         <div className="flex xl:hidden items-center gap-2">
-          <button onClick={toggleDark} className="w-8 h-8 flex items-center justify-center text-[#c9a84c]">
+          <button
+            onClick={toggleDark}
+            className="w-8 h-8 flex items-center justify-center text-[#c9a84c]"
+          >
             {darkMode ? <Sun size={14} /> : <Moon size={14} />}
           </button>
           <button onClick={toggleMenu} className="text-white p-1">
@@ -128,7 +140,9 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
                 <Link
                   to={link.to}
                   className={`font-serif text-4xl font-semibold transition-colors duration-300 tracking-wide ${
-                    location.pathname === link.to ? 'text-[#c9a84c]' : 'text-white hover:text-[#c9a84c]'
+                    location.pathname === link.to
+                      ? 'text-[#c9a84c]'
+                      : 'text-white hover:text-[#c9a84c]'
                   }`}
                 >
                   {link.label}

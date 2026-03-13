@@ -169,7 +169,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="bg-white p-8 shadow-sm space-y-5">
                   <h3 className="font-serif text-xl font-semibold text-[#0a1628]">Send a Message</h3>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] tracking-[0.18em] uppercase text-gray-400 mb-2">Full Name *</label>
                       <input

@@ -55,7 +55,7 @@ export default function Home({ onPlaySermon }: HomeProps) {
       {/* About Snippet */}
       <section className="bg-[#f8f6f0] py-28">
         <div className="max-w-6xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             {/* Image column */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -72,7 +72,7 @@ export default function Home({ onPlaySermon }: HomeProps) {
               {/* Gold accent frame */}
               <div className="absolute bottom-[-20px] right-[-20px] w-[60%] h-[60%] border-2 border-[#c9a84c] -z-10" />
               {/* Name tag */}
-              <div className="absolute bottom-8 left-[-20px] bg-[#0a1628] px-6 py-4 border-l-[3px] border-[#c9a84c]">
+              <div className="absolute bottom-8 left-0 lg:left-[-20px] bg-[#0a1628] px-5 py-3.5 border-l-[3px] border-[#c9a84c]">
                 <p className="font-serif italic text-[#c9a84c] text-sm">"Brother Gbola"</p>
                 <p className="text-[9px] tracking-[0.18em] uppercase text-white/50 mt-1">As he is fondly called</p>
               </div>
@@ -166,7 +166,7 @@ export default function Home({ onPlaySermon }: HomeProps) {
                 transition={{ delay: i * 0.09 }}
                 className="bg-[#112240] px-8 py-12 text-center group hover:bg-[#1a3358] transition-colors duration-300 relative overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#c9a84c] scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#c9a84c] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 <div className="w-14 h-14 mx-auto mb-5 border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c] group-hover:border-[#c9a84c] transition-colors duration-300">
                   <pillar.icon size={22} />
                 </div>
@@ -263,10 +263,7 @@ export default function Home({ onPlaySermon }: HomeProps) {
           </h2>
         </div>
 
-        <div
-          className="grid gap-1"
-          style={{ gridTemplateColumns: '2fr 1fr 1fr', height: '320px' }}
-        >
+        <div className="grid gap-1 h-[260px] sm:h-[320px]" style={{ gridTemplateColumns: 'clamp(120px, 50%, 400px) 1fr 1fr' }}>
           {[
             { src: rhemaImg, alt: 'Rev. Gbola at Rhema Ministers Conference' },
             { src: portraitImg, alt: 'Rev. Gbola portrait' },
@@ -283,7 +280,7 @@ export default function Home({ onPlaySermon }: HomeProps) {
                 alt={img.alt}
                 className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 saturate-[0.85] group-hover:saturate-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/50 to-transparent group-hover:opacity-0 transition-opacity duration-400" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/50 to-transparent group-hover:opacity-0 transition-opacity duration-300" />
             </motion.div>
           ))}
         </div>
@@ -332,7 +329,7 @@ export default function Home({ onPlaySermon }: HomeProps) {
                   allowFullScreen
                 />
               </div>
-              <div className="px-5 py-4 border-t border-white/08">
+              <div className="px-5 py-4 border-t border-white/10">
                 <div className="text-[9px] tracking-[0.22em] uppercase text-[#c9a84c] font-medium mb-1">Featured Teaching</div>
                 <p className="font-serif text-white font-semibold text-lg">{youtubeVideos[0].title}</p>
               </div>

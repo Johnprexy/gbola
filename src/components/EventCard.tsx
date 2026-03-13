@@ -16,7 +16,7 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
       transition={{ duration: 0.45, delay: index * 0.09 }}
       whileHover={{ x: 4 }}
       className="grid gap-8 items-center bg-white px-9 py-7 border-l-[3px] border-transparent hover:border-[#c9a84c] shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_6px_28px_rgba(0,0,0,0.1)] transition-all duration-300 cursor-pointer"
-      style={{ gridTemplateColumns: '80px 1fr auto' }}
+      style={{ gridTemplateColumns: '72px 1fr auto' }}
     >
       {/* Date box */}
       <div className="text-center bg-[#112240] px-2 py-3">

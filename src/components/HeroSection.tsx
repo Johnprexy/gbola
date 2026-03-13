@@ -14,10 +14,16 @@ export default function HeroSection() {
           backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.4) 60px, rgba(201,168,76,0.4) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.4) 60px, rgba(201,168,76,0.4) 61px)`,
         }}
       />
-      <div className="absolute right-0 top-0 bottom-0 w-3/5 bg-gradient-radial from-[#c9a84c]/08 to-transparent pointer-events-none" />
+      {/* Gold radial glow — using inline style (bg-gradient-radial is not a Tailwind utility) */}
+      <div
+        className="absolute right-0 top-0 bottom-0 w-3/5 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%)',
+        }}
+      />
 
       {/* Left Content */}
-      <div className="relative z-10 flex flex-col justify-center px-10 lg:pl-20 lg:pr-16 pt-32 pb-20">
+      <div className="relative z-10 flex flex-col justify-center px-6 sm:px-10 lg:pl-20 lg:pr-16 pt-28 pb-16 lg:pt-32 lg:pb-20">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,8 +32,8 @@ export default function HeroSection() {
           className="inline-flex items-center gap-3 border border-[#c9a84c]/40 px-5 py-2 mb-9 self-start"
         >
           <div className="w-6 h-px bg-[#c9a84c]" />
-          <span className="text-[10px] tracking-[0.28em] uppercase text-[#c9a84c] font-medium">
-            Ordained Minister · Rhema Ministerial Association
+          <span className="text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.28em] uppercase text-[#c9a84c] font-medium">
+            Ordained · Rhema Ministerial Association
           </span>
           <div className="w-6 h-px bg-[#c9a84c]" />
         </motion.div>
@@ -127,7 +133,7 @@ export default function HeroSection() {
       >
         <div className="relative w-full h-[95%]">
           {/* Gold frame accent */}
-          <div className="absolute top-10 right-[-20px] bottom-0 left-10 border border-[#c9a84c]/20 bg-gradient-to-br from-[#c9a84c]/10 to-[#c9a84c]/03 z-0" />
+          <div className="absolute top-10 right-[-20px] bottom-0 left-10 border border-[#c9a84c]/20 bg-gradient-to-br from-[#c9a84c]/10 to-transparent z-0" />
           <img
             src={portraitImg}
             alt="Rev. Adegbola Oladosu"
@@ -141,7 +147,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
+      <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-3">
         <div className="w-px h-14 bg-gradient-to-b from-[#c9a84c] to-transparent scroll-line-anim" />
         <span
           className="text-[9px] tracking-[0.35em] uppercase text-white/35"

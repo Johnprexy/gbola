@@ -73,7 +73,7 @@ export default function Teachings({ onPlaySermon }: TeachingsProps) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/52 text-base max-w-xl leading-[1.75]"
+            className="text-white/50 text-base max-w-xl leading-[1.75]"
           >
             A growing library of messages covering prayer, the Holy Spirit, intimacy with God,
             faith, leadership, and the Word.

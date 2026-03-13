@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Youtube } from 'lucide-react'
 import type { YoutubeVideo } from '@/data/videos'
@@ -6,31 +6,37 @@ import type { YoutubeVideo } from '@/data/videos'
 interface VideoCardProps {
   video: YoutubeVideo
   index?: number
-  featured?: boolean
 }
 
-export default function VideoCard({ video, index = 0, featured = false }: VideoCardProps) {
+export default function VideoCard({ video, index = 0 }: VideoCardProps) {
   const [playing, setPlaying] = useState(false)
+  const [title, setTitle] = useState(video.title)
   const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
   const sdThumbnail = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`
+
+  // Fetch real video title from YouTube oEmbed API (runs in browser — not blocked)
+  useEffect(() => {
+    fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`)
+      .then((r) => r.json())
+      .then((d) => { if (d?.title) setTitle(d.title) })
+      .catch(() => {/* silently keep fallback title */})
+  }, [video.id])
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`group overflow-hidden bg-[#0a1628] shadow-[0_4px_32px_rgba(0,0,0,0.3)] ${
-        featured ? 'col-span-2 row-span-1' : ''
-      }`}
+      transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.4) }}
+      className="group overflow-hidden bg-[#0a1628] shadow-[0_4px_32px_rgba(0,0,0,0.3)]"
     >
       {/* Video embed or thumbnail */}
-      <div className={`relative overflow-hidden ${featured ? 'aspect-video' : 'aspect-video'}`}>
+      <div className="relative overflow-hidden aspect-video">
         {playing ? (
           <iframe
             className="w-full h-full"
             src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`}
-            title={video.title}
+            title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
@@ -42,7 +48,7 @@ export default function VideoCard({ video, index = 0, featured = false }: VideoC
             {/* Thumbnail — tries maxres first, falls back to hqdefault */}
             <img
               src={thumbnailUrl}
-              alt={video.title}
+              alt={title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               onError={(e) => {
                 ;(e.target as HTMLImageElement).src = sdThumbnail
@@ -59,7 +65,6 @@ export default function VideoCard({ video, index = 0, featured = false }: VideoC
                 whileTap={{ scale: 0.95 }}
                 className="relative"
               >
-                {/* Pulsing ring */}
                 <div className="absolute inset-0 rounded-full bg-[#c9a84c]/20 animate-ping scale-150" />
                 <div className="relative w-16 h-16 rounded-full bg-[#c9a84c] flex items-center justify-center shadow-[0_0_40px_rgba(201,168,76,0.5)]">
                   <Play size={22} fill="#0a1628" className="text-[#0a1628] ml-1" />
@@ -77,12 +82,12 @@ export default function VideoCard({ video, index = 0, featured = false }: VideoC
       </div>
 
       {/* Card footer */}
-      <div className="px-5 py-4 border-t border-white/08">
+      <div className="px-5 py-4 border-t border-white/[0.08]">
         <div className="text-[9px] tracking-[0.22em] uppercase text-[#c9a84c] font-medium mb-1.5">
           Rev. Adegbola Oladosu
         </div>
-        <h3 className="font-serif text-white font-semibold leading-snug text-[0.95rem]">
-          {video.title}
+        <h3 className="font-serif text-white font-semibold leading-snug text-[0.95rem] line-clamp-2">
+          {title}
         </h3>
         {!playing && (
           <button

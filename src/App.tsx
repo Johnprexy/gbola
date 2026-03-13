@@ -30,7 +30,13 @@ function AnimatedRoutes({
   const location = useLocation()
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+      <motion.div
+        key={location.pathname}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         <Routes location={location}>
           <Route path="/" element={<Home onPlaySermon={onPlaySermon} />} />
           <Route path="/about" element={<About />} />
@@ -47,7 +53,8 @@ function AnimatedRoutes({
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false)
-  const { player, openSermon, togglePlay, closePlayer, seek } = useAudioPlayer()
+  const { player, openSermon, togglePlay, closePlayer, seek, elapsedStr, totalStr } =
+    useAudioPlayer()
 
   return (
     <BrowserRouter>
@@ -57,7 +64,14 @@ export default function App() {
           <AnimatedRoutes onPlaySermon={openSermon} />
         </main>
         <Footer />
-        <AudioPlayer player={player} onTogglePlay={togglePlay} onClose={closePlayer} onSeek={seek} />
+        <AudioPlayer
+          player={player}
+          onTogglePlay={togglePlay}
+          onClose={closePlayer}
+          onSeek={seek}
+          elapsedStr={elapsedStr}
+          totalStr={totalStr}
+        />
       </div>
     </BrowserRouter>
   )

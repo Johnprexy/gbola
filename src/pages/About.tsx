@@ -72,12 +72,12 @@ export default function About() {
       {/* Biography */}
       <section className="bg-[#f8f6f0] py-28">
         <div className="max-w-6xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="sticky top-28"
+              className="lg:sticky lg:top-28"
             >
               <div className="relative">
                 <img
@@ -85,7 +85,7 @@ export default function About() {
                   alt="Rev. Adegbola Oladosu"
                   className="w-full aspect-[3/4] object-cover object-top"
                 />
-                <div className="absolute bottom-[-16px] right-[-16px] w-1/2 h-1/2 border-2 border-[#c9a84c] -z-10" />
+                <div className="hidden sm:block absolute bottom-[-16px] right-[-16px] w-1/2 h-1/2 border-2 border-[#c9a84c] -z-10" />
               </div>
             </motion.div>
 
@@ -171,7 +171,7 @@ export default function About() {
 
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-[23px] top-0 bottom-0 w-px bg-[#c9a84c]/20" />
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-[#c9a84c]/20" />
 
             <div className="space-y-10">
               {timeline.map((item, i) => (
@@ -193,7 +193,7 @@ export default function About() {
                       {item.year}
                     </div>
                     <h3 className="font-serif text-xl font-semibold text-white mb-2.5">{item.title}</h3>
-                    <p className="text-white/52 text-sm leading-[1.8]">{item.desc}</p>
+                    <p className="text-white/50 text-sm leading-[1.8]">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
