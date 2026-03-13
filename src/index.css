@@ -1,14 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
 @import "tailwindcss";
 
+/* ─── LIGHT MODE (default) ─────────────────────────────────────── */
 :root {
-  --navy: #0a1628;
-  --navy-mid: #112240;
+  --navy:       #0a1628;
+  --navy-mid:   #112240;
   --navy-light: #1a3358;
-  --gold: #c9a84c;
+  --gold:       #c9a84c;
   --gold-light: #e8c97a;
-  --gold-pale: #f5e6b8;
-  --offwhite: #f8f6f0;
+  --gold-pale:  #f5e6b8;
+  --offwhite:   #f8f6f0;
+
+  /* Semantic tokens used across the site */
+  --page-bg:        #f8f6f0;
+  --page-bg-alt:    #f4f1eb;
+  --section-dark:   #0a1628;
+  --section-mid:    #112240;
+  --card-bg:        #ffffff;
+  --card-border:    rgba(0,0,0,0.07);
+  --body-text:      #4a4a4a;
+  --heading-text:   #0a1628;
+  --muted-text:     #888888;
+  --input-bg:       #ffffff;
+  --input-border:   #e2e2e2;
+  --hero-bg:        #0a1628;          /* hero always dark */
+  --footer-bg:      #050d1a;
+}
+
+/* ─── DARK MODE ─────────────────────────────────────────────────── */
+.dark {
+  --page-bg:        #0d1626;
+  --page-bg-alt:    #0a1120;
+  --section-dark:   #060e1a;
+  --section-mid:    #0d1a2e;
+  --card-bg:        #112240;
+  --card-border:    rgba(201,168,76,0.15);
+  --body-text:      rgba(255,255,255,0.72);
+  --heading-text:   #ffffff;
+  --muted-text:     rgba(255,255,255,0.45);
+  --input-bg:       #1a3358;
+  --input-border:   rgba(201,168,76,0.3);
+  --hero-bg:        #060e1a;
+  --footer-bg:      #030810;
 }
 
 * { box-sizing: border-box; }
@@ -20,6 +53,38 @@ body {
   background: var(--navy);
   color: white;
   overflow-x: hidden;
+}
+
+/* ─── SECTIONS THAT USE SEMANTIC TOKENS ────────────────────────── */
+
+/* Light background sections (About, Events, Invite, Gallery bottom etc.) */
+.section-light {
+  background-color: var(--page-bg);
+}
+.section-light-alt {
+  background-color: var(--page-bg-alt);
+}
+
+/* Dark sections stay dark in both modes (hero, focus pillars, quote, gallery, CTA) */
+.section-dark  { background-color: var(--section-dark); }
+.section-mid   { background-color: var(--section-mid); }
+
+/* Cards */
+.site-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+/* Body text */
+.text-body    { color: var(--body-text); }
+.text-heading { color: var(--heading-text); }
+.text-muted   { color: var(--muted-text); }
+
+/* Form inputs */
+.site-input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--heading-text);
 }
 
 /* Critical: used on all heading elements throughout the site */
@@ -59,3 +124,66 @@ body {
   50% { transform: translateY(-10px); }
 }
 .float-anim { animation: float 4s ease-in-out infinite; }
+
+/* ─── DARK MODE OVERRIDES ──────────────────────────────────────── */
+/* These override the hardcoded Tailwind bg/text colors on light sections */
+
+/* Light section backgrounds */
+.dark .bg-\[\#f8f6f0\]  { background-color: var(--page-bg) !important; }
+.dark .bg-\[\#f4f1eb\]  { background-color: var(--page-bg-alt) !important; }
+
+/* White cards → dark cards */
+.dark .bg-white         { background-color: var(--card-bg) !important; }
+
+/* Dark navy body text on light sections → white */
+.dark .text-\[\#0a1628\] { color: #ffffff !important; }
+.dark .text-\[\#4a4a4a\] { color: rgba(255,255,255,0.72) !important; }
+.dark .text-\[\#333\]    { color: rgba(255,255,255,0.80) !important; }
+.dark .text-\[\#444\]    { color: rgba(255,255,255,0.72) !important; }
+.dark .text-\[\#555\]    { color: rgba(255,255,255,0.65) !important; }
+.dark .text-gray-400     { color: rgba(255,255,255,0.40) !important; }
+.dark .text-gray-500     { color: rgba(255,255,255,0.50) !important; }
+
+/* Borders on light sections */
+.dark .border-gray-200   { border-color: rgba(201,168,76,0.2) !important; }
+.dark .border-\[\#ddd\]  { border-color: rgba(201,168,76,0.2) !important; }
+
+/* Credential / event card border on left */
+.dark .border-l-\[\#0a1628\] { border-color: var(--gold) !important; }
+
+/* Form inputs in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: #ffffff !important;
+}
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(255,255,255,0.35) !important;
+}
+
+/* Event cards on light sections */
+.dark .shadow-\[0_2px_12px_rgba\(0\,0\,0\,0\.06\)\] {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* Hover button outlines on light sections */
+.dark .border-\[\#0a1628\] {
+  border-color: rgba(201,168,76,0.6) !important;
+  color: var(--gold) !important;
+}
+
+/* Timeline dot background on About page */
+.dark .bg-\[\#112240\] { background-color: #1a3358 !important; }
+
+/* Smooth transition for all dark mode switches */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* But don't slow down animations */
+.animate-ping { transition: none !important; }
