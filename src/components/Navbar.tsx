@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Teachings', to: '/teachings' },
+  { label: 'Videos', to: '/videos' },
   { label: 'Events', to: '/events' },
   { label: 'Invite', to: '/invite' },
   { label: 'Contact', to: '/contact' },
@@ -48,8 +49,8 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between transition-all duration-500 ${
           scrolled
-            ? 'px-12 py-3.5 bg-[#0a1628]/92 backdrop-blur-xl border-b border-[#c9a84c]/20'
-            : 'px-12 py-5'
+            ? 'px-8 py-3 bg-[#0a1628]/95 backdrop-blur-xl border-b border-[#c9a84c]/20'
+            : 'px-8 py-5'
         }`}
       >
         {/* Logo */}
@@ -63,12 +64,12 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
         </Link>
 
         {/* Desktop Links */}
-        <ul className="hidden lg:flex items-center gap-8 list-none">
+        <ul className="hidden xl:flex items-center gap-7 list-none">
           {navLinks.map((link) => (
             <li key={link.to}>
               <Link
                 to={link.to}
-                className={`relative text-[11px] tracking-[0.15em] uppercase font-medium transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-px after:bg-[#c9a84c] after:transition-all after:duration-300 ${
+                className={`relative text-[10.5px] tracking-[0.14em] uppercase font-medium transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-px after:bg-[#c9a84c] after:transition-all after:duration-300 ${
                   location.pathname === link.to
                     ? 'text-[#e8c97a] after:w-full'
                     : 'text-white/75 hover:text-[#e8c97a] after:w-0 hover:after:w-full'
@@ -81,27 +82,24 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
         </ul>
 
         {/* Right actions */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           <button
             onClick={toggleDark}
-            className="w-9 h-9 flex items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors duration-300 rounded-sm"
+            className="w-9 h-9 flex items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors duration-300"
           >
             {darkMode ? <Sun size={15} /> : <Moon size={15} />}
           </button>
           <Link
             to="/invite"
-            className="border border-[#c9a84c] text-[#c9a84c] px-6 py-2.5 text-[11px] tracking-[0.18em] uppercase font-medium hover:bg-[#c9a84c] hover:text-[#0a1628] transition-all duration-300"
+            className="border border-[#c9a84c] text-[#c9a84c] px-5 py-2.5 text-[10.5px] tracking-[0.18em] uppercase font-medium hover:bg-[#c9a84c] hover:text-[#0a1628] transition-all duration-300"
           >
             Invite Rev. Gbola
           </Link>
         </div>
 
         {/* Mobile actions */}
-        <div className="flex lg:hidden items-center gap-2">
-          <button
-            onClick={toggleDark}
-            className="w-8 h-8 flex items-center justify-center text-[#c9a84c]"
-          >
+        <div className="flex xl:hidden items-center gap-2">
+          <button onClick={toggleDark} className="w-8 h-8 flex items-center justify-center text-[#c9a84c]">
             {darkMode ? <Sun size={14} /> : <Moon size={14} />}
           </button>
           <button onClick={toggleMenu} className="text-white p-1">
@@ -118,18 +116,20 @@ export default function Navbar({ darkMode, toggleDark }: NavbarProps) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 bg-[#0a1628] flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-40 bg-[#0a1628] flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.to}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07 + 0.1 }}
+                transition={{ delay: i * 0.06 + 0.1 }}
               >
                 <Link
                   to={link.to}
-                  className="font-serif text-4xl font-semibold text-white hover:text-[#c9a84c] transition-colors duration-300 tracking-wide"
+                  className={`font-serif text-4xl font-semibold transition-colors duration-300 tracking-wide ${
+                    location.pathname === link.to ? 'text-[#c9a84c]' : 'text-white hover:text-[#c9a84c]'
+                  }`}
                 >
                   {link.label}
                 </Link>

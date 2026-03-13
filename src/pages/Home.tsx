@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, BookOpen, Users, Flame, HandHeart } from 'lucide-react'
+import { ArrowRight, BookOpen, Users, Flame, HandHeart, Youtube } from 'lucide-react'
 
 import HeroSection from '@/components/HeroSection'
 import SermonCard from '@/components/SermonCard'
 import EventCard from '@/components/EventCard'
 import TestimonialQuote from '@/components/TestimonialQuote'
 import CTASection from '@/components/CTASection'
+import VideoCard from '@/components/VideoCard'
 
 import { sermons } from '@/data/sermons'
 import { events } from '@/data/events'
+import { youtubeVideos, YOUTUBE_CHANNEL_URL } from '@/data/videos'
 
 import preachingImg from '@/assets/preaching.jpg'
 import rhemaImg from '@/assets/rhema.jpg'
 import coupleImg from '@/assets/couple.jpg'
 import portraitImg from '@/assets/portrait.jpg'
+
 
 interface HomeProps {
   onPlaySermon: (title: string, subtitle: string) => void
@@ -288,6 +291,73 @@ export default function Home({ onPlaySermon }: HomeProps) {
         <p className="text-center text-white/30 text-xs tracking-widest uppercase mt-6">
           More photos coming soon
         </p>
+      </section>
+
+      {/* YouTube Videos Section */}
+      <section className="bg-[#060e1c] py-24">
+        <div className="max-w-6xl mx-auto px-8 lg:px-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-5">
+            <div>
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-8 h-px bg-[#c9a84c]" />
+                <span className="text-[10px] tracking-[0.3em] uppercase text-[#c9a84c] font-medium">YouTube Channel</span>
+              </div>
+              <h2 className="font-serif font-semibold text-white" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>
+                Watch Rev. Gbola Minister
+              </h2>
+            </div>
+            <a
+              href={YOUTUBE_CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-3 bg-red-600 hover:bg-red-500 text-white text-[10.5px] tracking-[0.15em] uppercase font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(220,38,38,0.35)] self-start sm:self-auto"
+            >
+              <Youtube size={13} />
+              Subscribe on YouTube
+            </a>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-5 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="overflow-hidden bg-[#0a1628] shadow-[0_8px_48px_rgba(0,0,0,0.4)]"
+            >
+              <div className="aspect-video">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${youtubeVideos[0].id}?rel=0&modestbranding=1`}
+                  title="Featured teaching"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="px-5 py-4 border-t border-white/08">
+                <div className="text-[9px] tracking-[0.22em] uppercase text-[#c9a84c] font-medium mb-1">Featured Teaching</div>
+                <p className="font-serif text-white font-semibold text-lg">{youtubeVideos[0].title}</p>
+              </div>
+            </motion.div>
+            <div className="flex flex-col gap-5">
+              {youtubeVideos.slice(1, 3).map((video, i) => (
+                <VideoCard key={video.id} video={video} index={i + 1} />
+              ))}
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {youtubeVideos.slice(3, 5).map((video, i) => (
+              <VideoCard key={video.id} video={video} index={i + 3} />
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/videos"
+              className="inline-flex items-center gap-2.5 text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.18em] uppercase font-medium transition-colors duration-300 group"
+            >
+              View All Videos
+              <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* CTA */}

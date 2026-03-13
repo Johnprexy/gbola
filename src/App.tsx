@@ -9,6 +9,7 @@ import AudioPlayer from '@/components/AudioPlayer'
 import Home from '@/pages/Home'
 import About from '@/pages/About'
 import Teachings from '@/pages/Teachings'
+import Videos from '@/pages/Videos'
 import Events from '@/pages/Events'
 import Invite from '@/pages/Invite'
 import Contact from '@/pages/Contact'
@@ -34,6 +35,7 @@ function AnimatedRoutes({
           <Route path="/" element={<Home onPlaySermon={onPlaySermon} />} />
           <Route path="/about" element={<About />} />
           <Route path="/teachings" element={<Teachings onPlaySermon={onPlaySermon} />} />
+          <Route path="/videos" element={<Videos />} />
           <Route path="/events" element={<Events />} />
           <Route path="/invite" element={<Invite />} />
           <Route path="/contact" element={<Contact />} />
