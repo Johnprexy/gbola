@@ -58,7 +58,7 @@ export default function Footer() {
               </span>
               <span className="text-[10px] tracking-[0.22em] uppercase text-[#c9a84c]">Ministry</span>
             </div>
-            <p className="text-white/40 text-sm leading-[1.75] mt-5 max-w-[260px]">
+            <p className="text-white/38 text-sm leading-[1.75] mt-5 max-w-[260px]">
               Ordained with Rhema Ministerial Association International. Teaching the Word.
               Raising Men of Prayer. Based in Abuja, Nigeria.
             </p>
@@ -77,7 +77,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={label}
-                  className={`w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 transition-all duration-300 ${hoverClass}`}
+                  className={`w-9 h-9 border border-white/12 flex items-center justify-center text-white/40 transition-all duration-300 ${hoverClass}`}
                 >
                   <Icon size={13} />
                 </a>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="text-white/50 text-sm hover:text-[#e8c97a] transition-colors duration-300"
+                    className="text-white/48 text-sm hover:text-[#e8c97a] transition-colors duration-300"
                   >
                     {l.label}
                   </Link>
@@ -122,7 +122,7 @@ export default function Footer() {
                 <li key={t}>
                   <Link
                     to="/teachings"
-                    className="text-white/50 text-sm hover:text-[#e8c97a] transition-colors duration-300"
+                    className="text-white/48 text-sm hover:text-[#e8c97a] transition-colors duration-300"
                   >
                     {t}
                   </Link>
@@ -141,7 +141,7 @@ export default function Footer() {
                 <Mail size={13} className="text-[#c9a84c] mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:revgbolaoladosu@gmail.com"
-                  className="text-white/50 text-sm hover:text-[#e8c97a] transition-colors duration-300 break-all"
+                  className="text-white/48 text-sm hover:text-[#e8c97a] transition-colors duration-300 break-all"
                 >
                   revgbolaoladosu@gmail.com
                 </a>
@@ -150,14 +150,14 @@ export default function Footer() {
                 <Phone size={13} className="text-[#c9a84c] mt-0.5 flex-shrink-0" />
                 <a
                   href="tel:+2348138519224"
-                  className="text-white/50 text-sm hover:text-[#e8c97a] transition-colors duration-300"
+                  className="text-white/48 text-sm hover:text-[#e8c97a] transition-colors duration-300"
                 >
                   +234 813 851 9224
                 </a>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={13} className="text-[#c9a84c] mt-0.5 flex-shrink-0" />
-                <span className="text-white/50 text-sm">Abuja, Nigeria</span>
+                <span className="text-white/48 text-sm">Abuja, Nigeria</span>
               </div>
               {/* WhatsApp */}
               <a
@@ -176,7 +176,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-white/08 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/25 text-xs">
             © {new Date().getFullYear()} Rev. Adegbola Oladosu Ministry. All rights reserved.
           </p>

@@ -193,7 +193,7 @@ export default function About() {
                       {item.year}
                     </div>
                     <h3 className="font-serif text-xl font-semibold text-white mb-2.5">{item.title}</h3>
-                    <p className="text-white/50 text-sm leading-[1.8]">{item.desc}</p>
+                    <p className="text-white/52 text-sm leading-[1.8]">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -205,7 +205,7 @@ export default function About() {
       {/* Family Section */}
       <section className="bg-[#f8f6f0] py-28">
         <div className="max-w-6xl mx-auto px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

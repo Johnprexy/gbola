@@ -11,7 +11,7 @@
   --offwhite: #f8f6f0;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
@@ -22,8 +22,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Ensure pages with light backgrounds don't inherit dark body */
-#root { min-height: 100vh; }
+/* Critical: used on all heading elements throughout the site */
+.font-serif {
+  font-family: 'Cormorant Garamond', serif;
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
@@ -57,9 +59,3 @@ body {
   50% { transform: translateY(-10px); }
 }
 .float-anim { animation: float 4s ease-in-out infinite; }
-
-/* Fix: Tailwind v4 doesn't include border-opacity utilities by default */
-.border-white\/08 { border-color: rgba(255, 255, 255, 0.08); }
-.border-white\/10 { border-color: rgba(255, 255, 255, 0.10); }
-.border-white\/12 { border-color: rgba(255, 255, 255, 0.12); }
-.border-white\/15 { border-color: rgba(255, 255, 255, 0.15); }
