@@ -12,6 +12,13 @@ import VideoCard from '@/components/VideoCard'
 import { sermons } from '@/data/sermons'
 import { events } from '@/data/events'
 import { youtubeVideos, YOUTUBE_CHANNEL_URL } from '@/data/videos'
+import prayerConferenceFlyer from '@/assets/prayer-conference-flyer.jpg'
+
+// Map event IDs to flyer images
+const flyerMap: Record<string, string> = {
+  'scripture-city-1': prayerConferenceFlyer,
+  'scripture-city-2': prayerConferenceFlyer,
+}
 
 import preachingImg from '@/assets/preaching.jpg'
 import rhemaImg from '@/assets/rhema.jpg'
@@ -238,7 +245,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-4">
             {events.map((event, i) => (
-              <EventCard key={event.id} event={event} index={i} />
+              <EventCard key={event.id} event={event} index={i} flyerSrc={flyerMap[event.id]} />
             ))}
           </div>
         </div>
